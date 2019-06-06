@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, Platform } from 'react-native';
+import { Button } from 'native-base';
 
 // export default function App() {
 //   return (
@@ -14,6 +15,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
+        <Button><Text>   Hello World   </Text></Button>
       </View>
     );
   }
