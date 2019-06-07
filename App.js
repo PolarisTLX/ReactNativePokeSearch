@@ -2,6 +2,9 @@ import React from 'react';
 import { Text, View, Platform, ImageBackground } from 'react-native';
 import { Button } from 'native-base';
 
+import Landing from './src/Landing.js';
+import Search from './src/Search.js';
+
 // export default function App() {
 //   return (
 //     <View style={styles.container}>
@@ -10,17 +13,28 @@ import { Button } from 'native-base';
 //   );
 // }
 
-let myBackground = require('./assets/landing.jpg');
-
 export default class App extends React.Component {
+
+  state = {
+    currentScreen: 'landing'
+  }
+
+  switchScreen = (currentScreen) => {
+    this.setState({currentScreen});
+  }
+
+  renderScreen = () => {
+    if (this.state.currentScreen === "landing"){
+      return(<Landing switchScreen={this.switchScreen}/>)
+    } else if (this.state.currentScreen === "search"){
+      return(<Search/>)
+    }
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground source={myBackground} style={{height: '100%', width: '100%'}}>
-          <Text>Open up App.js to start working on your app!</Text>
-          <Button><Text>   Hello World   </Text></Button>
-        </ImageBackground>
+        {this.renderScreen()}
       </View>
     );
   }
@@ -30,8 +44,7 @@ const styles = {
   container: {
     flex: 1,
     marginTop: Platform.OS === "android" ? 24 : 0,
-    backgroundColor: '#fff',
-    // alignItems: 'center',
     // justifyContent: 'center',
-  },
+    // alignItems: 'center'
+  }
 };
