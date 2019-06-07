@@ -16,7 +16,7 @@ import Search from './src/Search.js';
 export default class App extends React.Component {
 
   state = {
-    currentScreen: 'landing'
+    currentScreen: 'search'
   }
 
   switchScreen = (currentScreen) => {
